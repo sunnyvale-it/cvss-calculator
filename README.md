@@ -3,7 +3,7 @@
 
 ## Purpose
 
-Since the NIST Network Vulnerability Database (NVD) does not support the CVSS 3 Temporal scoring, the script implements some logic to add this funcionality.
+Since the NIST Network Vulnerability Database (NVD) does not support the CVSS 3 Temporal scoring, the script in this repo implements some logic to add this funcionality.
 
 For any CVE, the scripts evaluates all the references recorded into NVD itself and enriches the Base vector string to compute a Temporal score.
 
