@@ -66,11 +66,11 @@ def run_main(params):
     if exploit_refs_count == 0:
         cvss3_final_vector_string += "/E:U"
     else:
-        cvss3_final_vector_string += "/E:P"
+        cvss3_final_vector_string += "/E:H"
 
     # Temporal Remediation Level (RL)
     if patch_refs_count > 0:
-        cvss3_final_vector_string += "/RL:T"
+        cvss3_final_vector_string += "/RL:O"
 
     # Temporal Report Confidence (RC)
     if vendor_adv_refs_count > 0:
