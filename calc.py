@@ -27,8 +27,17 @@ def run_main(params):
         exit("CVE {} not found".format(params[0]))
     response_json = response.json()
     cve_references = response_json['vulnerabilities'][0]['cve']['references']
-    cvss3_base_score = response_json['vulnerabilities'][0]['cve']['metrics']['cvssMetricV31'][0]['cvssData']['baseScore']
-    cvss3_base_vector_string = response_json['vulnerabilities'][0]['cve']['metrics']['cvssMetricV31'][0]['cvssData']['vectorString']
+
+    cvss3_base_score = None
+    cvss3_base_vector_string = None
+
+    if 'cvssMetricV31' in response_json['vulnerabilities'][0]['cve']['metrics'] :
+        cvss3_base_score = response_json['vulnerabilities'][0]['cve']['metrics']['cvssMetricV31'][0]['cvssData']['baseScore']
+        cvss3_base_vector_string = response_json['vulnerabilities'][0]['cve']['metrics']['cvssMetricV31'][0]['cvssData']['vectorString']
+    elif 'cvssMetricV30' in response_json['vulnerabilities'][0]['cve']['metrics'] :
+        cvss3_base_score = response_json['vulnerabilities'][0]['cve']['metrics']['cvssMetricV30'][0]['cvssData']['baseScore']
+        cvss3_base_vector_string = response_json['vulnerabilities'][0]['cve']['metrics']['cvssMetricV30'][0]['cvssData']['vectorString']
+    
     cvss3_final_vector_string = cvss3_base_vector_string
 
 
